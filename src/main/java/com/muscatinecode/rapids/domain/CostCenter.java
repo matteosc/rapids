@@ -58,7 +58,7 @@ public class CostCenter {
         this.goods = goods;
     }
 
-
+////////////////////////////
     public CostCenter addGood(Good good){
         good.setCostCenter(this);
         this.goods.add(good);
