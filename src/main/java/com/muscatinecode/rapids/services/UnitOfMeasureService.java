@@ -2,6 +2,7 @@ package com.muscatinecode.rapids.services;
 
 
 import com.muscatinecode.rapids.commands.UnitOfMeasureCommand;
+import com.muscatinecode.rapids.domain.UnitOfMeasure;
 
 import java.util.Set;
 
@@ -11,4 +12,12 @@ import java.util.Set;
 public interface UnitOfMeasureService {
 
     Set<UnitOfMeasureCommand> listAllUoms();
+
+    UnitOfMeasure findById(Long l);
+
+    UnitOfMeasureCommand findCommandById(Long l);
+
+    UnitOfMeasureCommand saveUnitOfMeasureCommand(UnitOfMeasureCommand command);
+
+    void deleteById(Long idToDelete);
 }
