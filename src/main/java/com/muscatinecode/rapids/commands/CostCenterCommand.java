@@ -19,7 +19,7 @@ import java.util.Set;
 public class CostCenterCommand {
     private Long id;
     private String name;
-    private Set<Good> goods = new HashSet<Good>();
+    private Set<GoodCommand> goods = new HashSet<>();
 
 
 }

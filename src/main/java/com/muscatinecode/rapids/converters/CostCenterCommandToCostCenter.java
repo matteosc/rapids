@@ -2,15 +2,13 @@ package com.muscatinecode.rapids.converters;
 
 
 import com.muscatinecode.rapids.commands.CostCenterCommand;
-import com.muscatinecode.rapids.commands.RecipeCommand;
 import com.muscatinecode.rapids.domain.CostCenter;
-import com.muscatinecode.rapids.domain.Recipe;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
-private Set<Good> goods = new HashSet<Good>();
+
 
 
 /**
@@ -18,8 +16,13 @@ private Set<Good> goods = new HashSet<Good>();
  */
 @Component
 public class CostCenterCommandToCostCenter implements Converter<CostCenterCommand, CostCenter> {
+    private final GoodCommandToGood goodConverter;
 
-    private final GoodCommandToGood goodConveter;
+    public CostCenterCommandToCostCenter(GoodCommandToGood goodConverter) {
+        this.goodConverter = goodConverter;
+    }
+
+
 // todo create good converter
 
 
@@ -34,12 +37,12 @@ public class CostCenterCommandToCostCenter implements Converter<CostCenterComman
 
         final CostCenter costCenter = new CostCenter();
         costCenter.setId(source.getId());
-        costCenter.setName(source.getName();
+        costCenter.setName(source.getName());
 
 
         if (source.getGoods() != null && source.getGoods().size() > 0) {
             source.getGoods()
-                    .forEach(good -> costCenter.getGoods().add(goodConveter.convert(good)));
+                    .forEach(good -> costCenter.getGoods().add( goodConverter.convert(good)));
         }
 
 

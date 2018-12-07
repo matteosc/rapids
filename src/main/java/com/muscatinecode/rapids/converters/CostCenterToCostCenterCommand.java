@@ -1,18 +1,13 @@
 package com.muscatinecode.rapids.converters;
 
+
 import com.muscatinecode.rapids.commands.CostCenterCommand;
-import com.muscatinecode.rapids.commands.RecipeCommand;
-import com.muscatinecode.rapids.domain.Category;
 import com.muscatinecode.rapids.domain.CostCenter;
 import com.muscatinecode.rapids.domain.Good;
-import com.muscatinecode.rapids.domain.Recipe;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
-private Long id;
-private String name;
-private Set<Good> goods = new HashSet<Good>();
 
 /**
  * Created by jt on 6/21/17.
@@ -20,8 +15,11 @@ private Set<Good> goods = new HashSet<Good>();
 @Component
 public class CostCenterToCostCenterCommand implements Converter<CostCenter, CostCenterCommand>{
 
-    private final CategoryToCategoryCommand categoryConveter;
+    private final GoodToGoodCommand goodConveter;
 
+    public CostCenterToCostCenterCommand(GoodToGoodCommand goodConveter) {
+        this.goodConveter = goodConveter;
+    }
 
 
     @Synchronized
