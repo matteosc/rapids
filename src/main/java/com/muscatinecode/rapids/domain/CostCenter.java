@@ -57,6 +57,14 @@ public class CostCenter {
     public void setGoods(Set<Good> goods) {
         this.goods = goods;
     }
+
+
+    public CostCenter addGood(Good good){
+        good.setCostCenter(this);
+        this.goods.add(good);
+        return this;
+    }
+
 //equals and hashcode
 
     @Override
