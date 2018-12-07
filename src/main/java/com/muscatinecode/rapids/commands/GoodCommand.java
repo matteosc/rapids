@@ -19,18 +19,4 @@ public class GoodCommand {
     protected Long measurementUnitId;
     protected Long taxDepreciationId;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

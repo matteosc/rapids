@@ -1,11 +1,8 @@
 package com.muscatinecode.rapids.converters;
 
 import com.muscatinecode.rapids.commands.GoodCommand;
-import com.muscatinecode.rapids.commands.IngredientCommand;
-import com.muscatinecode.rapids.domain.CostCenter;
-import com.muscatinecode.rapids.domain.Good;
-import com.muscatinecode.rapids.domain.Ingredient;
-import com.muscatinecode.rapids.domain.Recipe;
+
+import com.muscatinecode.rapids.domain.*;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
@@ -15,12 +12,9 @@ import org.springframework.stereotype.Component;
  */
 
 
-protected Long measurementUnitId;
-protected Long taxDepreciationId;
 @Component
 public class GoodCommandToGood implements Converter<GoodCommand, Good> {
 
-    private final UnitOfMeasureCommandToUnitOfMeasure uomConverter;
 
     @Nullable
     @Override
@@ -35,9 +29,28 @@ good.setName(source.getName());
 
 
 
+        if(source.getMeasurementUnitId() != null){
+            UnitOfMeasure unitOfMeasure = new UnitOfMeasure();
+            unitOfMeasure.setId(source.getMeasurementUnitId());
+            good.setMeasurementUnit(unitOfMeasure);
+
+        }
+
+
+
+        if(source.getTaxDepreciationId() != null){
+            TaxDepreciation taxDepreciation = new TaxDepreciation();
+            taxDepreciation.setId(source.getTaxDepreciationId());
+            good.setTaxDepreciation(taxDepreciation);
+
+        }
+
+
+
+
         if(source.getCostCenterId() != null){
             CostCenter costCenter = new CostCenter();
-            costCenter.setId(source.getCostCenterId();
+            costCenter.setId(source.getCostCenterId());
             good.setCostCenter(costCenter);
             costCenter.addGood(good);
         }
@@ -45,12 +58,6 @@ good.setName(source.getName());
 
 
 
-
-
-
-        ingredient.setAmount(source.getAmount());
-        ingredient.setDescription(source.getDescription());
-        ingredient.setUom(uomConverter.convert(source.getUom()));
-        return ingredient;
+        return good;
     }
 }

@@ -43,6 +43,9 @@ public class TaxDepreciation {
         this.name = name;
     }
 
+// todo one to many goods not present and not adding in the good converter check if is this a bug!
+
+
     // equal and hashcode
 
     @Override
