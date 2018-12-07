@@ -1,6 +1,8 @@
 package com.muscatinecode.rapids.converters;
 
+import com.muscatinecode.rapids.commands.GoodCommand;
 import com.muscatinecode.rapids.commands.IngredientCommand;
+import com.muscatinecode.rapids.domain.Good;
 import com.muscatinecode.rapids.domain.Ingredient;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
@@ -10,31 +12,40 @@ import org.springframework.stereotype.Component;
 /**
  * Created by jt on 6/21/17.
  */
+
 @Component
-public class GoodToGoodCommand implements Converter<Ingredient, IngredientCommand> {
+public class GoodToGoodCommand implements Converter<Good, GoodCommand> {
 
-    private final UnitOfMeasureToUnitOfMeasureCommand uomConverter;
 
-    public GoodToGoodCommand(UnitOfMeasureToUnitOfMeasureCommand uomConverter) {
-        this.uomConverter = uomConverter;
-    }
 
     @Synchronized
     @Nullable
     @Override
-    public IngredientCommand convert(Ingredient ingredient) {
-        if (ingredient == null) {
+    public GoodCommand convert(Good good) {
+        if (good == null) {
             return null;
         }
 
-        IngredientCommand ingredientCommand = new IngredientCommand();
-        ingredientCommand.setId(ingredient.getId());
-        if (ingredient.getRecipe() != null) {
-            ingredientCommand.setRecipeId(ingredient.getRecipe().getId());
+
+        GoodCommand goodCommand = new GoodCommand();
+
+        goodCommand.setId(good.getId());
+        if (good.getCostCenter() != null) {
+            goodCommand.setCostCenterId(good.getCostCenter().getId());
         }
-        ingredientCommand.setAmount(ingredient.getAmount());
-        ingredientCommand.setDescription(ingredient.getDescription());
-        ingredientCommand.setUom(uomConverter.convert(ingredient.getUom()));
-        return ingredientCommand;
+
+
+        if (good.getTaxDepreciation() != null) {
+            goodCommand.setTaxDepreciationId(good.getTaxDepreciation().getId());
+        }
+
+
+        if (good.getMeasurementUnit() != null) {
+            goodCommand.setMeasurementUnitId(good.getMeasurementUnit().getId());
+        }
+
+
+
+        return goodCommand;
     }
 }
