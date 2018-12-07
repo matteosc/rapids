@@ -1,6 +1,7 @@
 package com.muscatinecode.rapids.controllers.UnitOfMesurement;
 
 import com.muscatinecode.rapids.commands.RecipeCommand;
+import com.muscatinecode.rapids.commands.UnitOfMeasureCommand;
 import com.muscatinecode.rapids.services.UnitOfMeasureService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -25,40 +26,40 @@ public class UnitOfMesurementController {
     @RequestMapping("/uom/{id}/show")
     public String showById(@PathVariable String id, Model model){
 
-        model.addAttribute("uom", unitOfMeasureService.(new Long(id)));
+        model.addAttribute("uom", unitOfMeasureService.findById(new Long(id)));
 
-        return "recipe/show";
+        return "uom/show";
     }
 
     @GetMapping
-    @RequestMapping("recipe/new")
+    @RequestMapping("uom/new")
     public String newRecipe(Model model){
-        model.addAttribute("recipe", new RecipeCommand());
+        model.addAttribute("uom", new UnitOfMeasureCommand());
 
-        return "recipe/recipeform";
+        return "uom/uomform";
     }
 
     @GetMapping
-    @RequestMapping("recipe/{id}/update")
+    @RequestMapping("uom/{id}/update")
     public String updateRecipe(@PathVariable String id, Model model){
-        model.addAttribute("recipe", recipeService.findCommandById(Long.valueOf(id)));
+        model.addAttribute("uom", unitOfMeasureService.findCommandById(Long.valueOf(id)));
         return  "recipe/recipeform";
     }
 
-    @PostMapping("recipe")
-    public String saveOrUpdate(@ModelAttribute RecipeCommand command){
-        RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
+    @PostMapping("uom")
+    public String saveOrUpdate(@ModelAttribute UnitOfMeasureCommand command){
+        UnitOfMeasureCommand savedCommand = unitOfMeasureService.saveUnitOfMeasureCommand(command);
 
-        return "redirect:/recipe/" + savedCommand.getId() + "/show";
+        return "redirect:/uom/" + savedCommand.getId() + "/show";
     }
 
     @GetMapping
-    @RequestMapping("recipe/{id}/delete")
+    @RequestMapping("uom/{id}/delete")
     public String deleteById(@PathVariable String id){
 
         log.debug("Deleting id: " + id);
 
-        recipeService.deleteById(Long.valueOf(id));
+        unitOfMeasureService.deleteById(Long.valueOf(id));
         return "redirect:/";
     }
 }

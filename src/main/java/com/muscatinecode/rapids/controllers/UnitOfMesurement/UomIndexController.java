@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Slf4j
 @Controller
-public class IndexController {
+public class UomIndexController {
 
     private final UnitOfMeasureService unitOfMeasureService;
 
-    public IndexController(UnitOfMeasureService unitOfMeasureService) {
+    public UomIndexController(UnitOfMeasureService unitOfMeasureService) {
         this.unitOfMeasureService = unitOfMeasureService;
     }
 
