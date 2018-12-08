@@ -18,7 +18,9 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
-
+    @Transient
+    @Enumerated(EnumType.STRING)
+    private CateType cateType;
     @ManyToMany(mappedBy = "categories")
     private Set<Recipe> recipes;
 

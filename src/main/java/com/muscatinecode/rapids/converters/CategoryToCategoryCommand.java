@@ -22,7 +22,7 @@ public class CategoryToCategoryCommand implements Converter<Category, CategoryCo
         }
 
         final CategoryCommand categoryCommand = new CategoryCommand();
-
+categoryCommand.setCateType(source.getCateType());
         categoryCommand.setId(source.getId());
         categoryCommand.setDescription(source.getDescription());
 
