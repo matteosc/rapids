@@ -33,7 +33,7 @@ public class UnitOfMesurementController {
 
     @GetMapping
     @RequestMapping("uom/new")
-    public String newRecipe(Model model){
+    public String newUom(Model model){
         model.addAttribute("uom", new UnitOfMeasureCommand());
 
         return "uom/uomform";
@@ -41,12 +41,12 @@ public class UnitOfMesurementController {
 
     @GetMapping
     @RequestMapping("uom/{id}/update")
-    public String updateRecipe(@PathVariable String id, Model model){
+    public String updateUom(@PathVariable String id, Model model){
         model.addAttribute("uom", unitOfMeasureService.findCommandById(Long.valueOf(id)));
-        return  "recipe/recipeform";
+        return "uom/uomform";
     }
 
-    @PostMapping("uom")
+    @PostMapping("uom/")
     public String saveOrUpdate(@ModelAttribute UnitOfMeasureCommand command){
         UnitOfMeasureCommand savedCommand = unitOfMeasureService.saveUnitOfMeasureCommand(command);
 

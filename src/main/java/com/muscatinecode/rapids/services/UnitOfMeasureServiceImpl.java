@@ -76,6 +76,7 @@ public class UnitOfMeasureServiceImpl implements UnitOfMeasureService {
     @Override
     @Transactional
     public UnitOfMeasureCommand saveUnitOfMeasureCommand(UnitOfMeasureCommand command) {
+       System.out.println("save in serv");
         UnitOfMeasure detachedUnitOfMeasure = unitOfMeasureCommandToUnitOfMeasure.convert(command);
 
         UnitOfMeasure savedUnitOfMeasure = unitOfMeasureRepository.save(detachedUnitOfMeasure);
