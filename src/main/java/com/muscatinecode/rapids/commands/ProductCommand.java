@@ -20,7 +20,6 @@ public class ProductCommand {
     private double kgPerMu;
     private String barCode;
     private Set<SupplierInvoiceRowCommand> supplierInvoiceRows;
-
     private Set<SupplierOrderRowCommand> supplierOrderRows;
 
 
