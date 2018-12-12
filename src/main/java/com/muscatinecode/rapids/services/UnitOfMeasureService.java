@@ -4,6 +4,7 @@ package com.muscatinecode.rapids.services;
 import com.muscatinecode.rapids.commands.UnitOfMeasureCommand;
 import com.muscatinecode.rapids.domain.UnitOfMeasure;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -20,4 +21,5 @@ public interface UnitOfMeasureService {
     UnitOfMeasureCommand saveUnitOfMeasureCommand(UnitOfMeasureCommand command);
 
     void deleteById(Long idToDelete);
+    List<UnitOfMeasure>  findAllByDescriptionLike(String description);
 }

@@ -9,6 +9,7 @@ import com.muscatinecode.rapids.repositories.UnitOfMeasureRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -76,17 +77,24 @@ public class UnitOfMeasureServiceImpl implements UnitOfMeasureService {
     @Override
     @Transactional
     public UnitOfMeasureCommand saveUnitOfMeasureCommand(UnitOfMeasureCommand command) {
-       System.out.println("save in serv");
+       System.out.println("save in serv "+command.getId());
+
         UnitOfMeasure detachedUnitOfMeasure = unitOfMeasureCommandToUnitOfMeasure.convert(command);
 
         UnitOfMeasure savedUnitOfMeasure = unitOfMeasureRepository.save(detachedUnitOfMeasure);
+UnitOfMeasureCommand ret=unitOfMeasureToUnitOfMeasureCommand.convert(savedUnitOfMeasure);
 
-        return unitOfMeasureToUnitOfMeasureCommand.convert(savedUnitOfMeasure);
+        return ret;
     }
 
     @Override
     public void deleteById(Long idToDelete) {
 unitOfMeasureRepository.deleteById(idToDelete);
 
+    }
+
+    @Override
+    public List<UnitOfMeasure> findAllByDescriptionLike(String description) {
+        return unitOfMeasureRepository.findAllByDescriptionLike(description);
     }
 }

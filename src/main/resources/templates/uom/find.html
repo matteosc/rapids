@@ -28,43 +28,15 @@
           th:href="@{/css/style.css}"/>
 
 </head>
+
 <body>
+<label>Description</label>
 
+<form th:object="${uom}" th:action="@{/uom}" method="get" >
+    <input th:field="*{description}" />
+    <input type="submit"/>
 
-<!--/*@thymesVar id="uom" type="java.util.List"*/-->
-<!--/*@thymesVar id="uom" type="com.muscatinecode.rapids.domain.UnitOfMeasure"*/-->
+</form>
 
-<div class="container-fluid">
-    <div  >
-
-
-        <img src="../../img/logo.jpg">
-    </div>
-
-
-    <div th:id="content">
-        <div >
-            <span class="myLable" th:text="Id"></span>
-            <span th:text=" ${uom.id}"></span>
-        </div>
-        <div>
-            <span class="myLable" th:text="Description"></span>
-            <span th:text=" ${uom.description}"></span>
-        </div>
-
-    </div>
-
-
-</div>
-
-
-
-<div th:id="footer" >
-
-    <a href="#" th:href="@{/uom/}">
-        <button class="btn   btn-outline-secondary" type="button">Back to Units of Measure</button>
-    </a>
-
-</div>
 </body>
 </html>
