@@ -19,8 +19,6 @@ public class ProductCommand {
     private int articlePerCollection;
     private double kgPerMu;
     private String barCode;
-
-
     private Set<SupplierInvoiceRowCommand> supplierInvoiceRows;
 
     private Set<SupplierOrderRowCommand> supplierOrderRows;
