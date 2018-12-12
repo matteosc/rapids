@@ -16,12 +16,12 @@ public class SupplierInvoiceRowCommand {
 
     private long id;
 
-    private StokMovement stokMovement;
+    private StokMovementCommand stokMovement;
 
 
-    private SupplierInvoice supplierInvoice;
+    private SupplierInvoiceCommand supplierInvoice;
 
-    private Product product;
+    private ProductCommand product;
 
     private float quantity;
 
