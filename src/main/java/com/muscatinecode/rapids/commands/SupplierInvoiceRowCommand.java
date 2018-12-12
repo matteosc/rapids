@@ -1,10 +1,6 @@
 package com.muscatinecode.rapids.commands;
 
-
-import com.muscatinecode.rapids.domain.Product;
-import com.muscatinecode.rapids.domain.StokMovement;
-import com.muscatinecode.rapids.domain.SupplierInvoice;
-import lombok.Getter;
+ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 

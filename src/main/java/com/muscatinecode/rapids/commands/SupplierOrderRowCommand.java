@@ -1,12 +1,12 @@
 package com.muscatinecode.rapids.commands;
 
-import com.muscatinecode.rapids.domain.Product;
-import com.muscatinecode.rapids.domain.SupplierOrder;
-import com.muscatinecode.rapids.domain.UnitOfMeasure;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
-import java.util.Objects;
-
+@Getter
+@Setter
+@NoArgsConstructor
 public class SupplierOrderRowCommand {
 
     private long id;
