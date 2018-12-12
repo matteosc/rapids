@@ -4,6 +4,7 @@ package com.muscatinecode.rapids.commands;
 import com.muscatinecode.rapids.domain.Product;
 import com.muscatinecode.rapids.domain.Recipe;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.lang.Nullable;
 
@@ -13,6 +14,9 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@Setter
+@Getter
+@NoArgsConstructor
 public class AllergenCommand {
 
     private long id;
