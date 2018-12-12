@@ -18,5 +18,4 @@ public class GoodCommand {
     protected Long costCenterId;
     protected Long measurementUnitId;
     protected Long taxDepreciationId;
-
 }
