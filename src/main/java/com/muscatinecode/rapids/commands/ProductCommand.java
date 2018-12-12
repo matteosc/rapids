@@ -36,5 +36,5 @@ public class ProductCommand {
 
     private SupplierCommand supplier;
 
-    private Set<AllergenCommand> allergens = new HashSet<Allergen>();
+    private Set<AllergenCommand> allergens = new HashSet<>();
 }
