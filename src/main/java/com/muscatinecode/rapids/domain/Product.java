@@ -116,7 +116,7 @@ public class Product {
         this.supplierCode = supplierCode;
     }
 
-    public boolean isCollection() {
+    public boolean getCollection() {
         return collection;
     }
 

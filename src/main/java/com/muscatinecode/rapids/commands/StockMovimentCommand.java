@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-public class StokMovementCommand {
+public class StockMovimentCommand {
 
     private long id;
 

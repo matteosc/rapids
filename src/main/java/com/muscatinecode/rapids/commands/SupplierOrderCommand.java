@@ -1,9 +1,14 @@
 package com.muscatinecode.rapids.commands;
 
+import com.muscatinecode.rapids.domain.Supplier;
+import com.muscatinecode.rapids.domain.SupplierOrderRow;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,21 +17,14 @@ import java.util.Set;
 @NoArgsConstructor
 public class SupplierOrderCommand {
 
-    private Long id;
+    private long id;
 
-    private String name;
-    private String vatNumber;
-    private String socialSecurityNumber;
-    private String telephone;
-    private String webSite;
+    private LocalDate orderDate;
+    private LocalDate requestDeliveryDate;
+    private String orderNumber;
 
-    private AddressCommand address;
+    private Set<SupplierOrderRowCommand> supplierOrderRows=new HashSet<>();
 
-
-    private Set<SupplierOrderCommand> supplierOrders = new HashSet<>();
-
-
-
-    private Set<SupplierInvoiceCommand> supplierInvoices = new HashSet<>();
+    SupplierCommand supplier;
 
 }

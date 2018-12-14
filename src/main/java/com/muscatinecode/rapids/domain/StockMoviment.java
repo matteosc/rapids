@@ -11,7 +11,7 @@ import java.util.Objects;
 /////////// done ////////////
 @Entity
 @Table(name="stok_moviment")
-public class StokMovement {
+public class StockMoviment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", updatable = false, nullable = false)
@@ -49,15 +49,15 @@ public class StokMovement {
 
     // default constructor
 
-    public StokMovement() {
+    public StockMoviment() {
     }
 
     //args contructor
 
-    public StokMovement(@NotNull String name, @NotNull LocalDate movimentDate, float quantity, float value,
-                        @Nullable SupplierInvoiceRow supplierInvoiceRow, Good good, Product product,
-                        @Nullable Damping damping, @Nullable IncomingDonation donation,
-                        UnitOfMeasure measurementUnit) {
+    public StockMoviment(@NotNull String name, @NotNull LocalDate movimentDate, float quantity, float value,
+                         @Nullable SupplierInvoiceRow supplierInvoiceRow, Good good, Product product,
+                         @Nullable Damping damping, @Nullable IncomingDonation donation,
+                         UnitOfMeasure measurementUnit) {
         this.name = name;
         this.movimentDate = movimentDate;
         this.quantity = quantity;
@@ -172,7 +172,7 @@ public class StokMovement {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        StokMovement that = (StokMovement) o;
+        StockMoviment that = (StockMoviment) o;
         return id == that.id;
     }
 
@@ -187,7 +187,7 @@ public class StokMovement {
 
     @Override
     public String toString() {
-        return "StokMovement{" +
+        return "StockMoviment{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", movimentDate=" + movimentDate +

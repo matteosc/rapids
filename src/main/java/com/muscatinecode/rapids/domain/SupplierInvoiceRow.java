@@ -15,7 +15,7 @@ public class SupplierInvoiceRow {
     private long id;
 
     @OneToOne(mappedBy = "supplierInvoiceRow")
-    private StokMovement stokMovement;
+    private StockMoviment stockMoviment;
 
     @ManyToOne
     @JoinColumn(name = "fk_supplier_invoice")
@@ -23,7 +23,8 @@ public class SupplierInvoiceRow {
     @ManyToOne
     @JoinColumn(name = "fk_product")
     private Product product;
-
+    @Lob
+private String notes;
     private float quantity;
 
     private float vatCoeff;
@@ -45,31 +46,30 @@ public class SupplierInvoiceRow {
         this.totalWhitVat = this.total + this.vat;
     }
 
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
     // default constructor
     public SupplierInvoiceRow() {
     }
 
 // args constructor
 
-    public SupplierInvoiceRow(SupplierInvoice supplierInvoice, Product product, StokMovement stokMovement,
-                              float quantity, float vatCoeff, float price) {
-        this.supplierInvoice = supplierInvoice;
-        this.product = product;
-        this.quantity = quantity;
-        this.vatCoeff = vatCoeff;
-        this.price = price;
-        this.stokMovement=stokMovement;
-    }
+
 
 
 // complete constructor
 
-    public SupplierInvoiceRow(StokMovement stokMovement, SupplierInvoice supplierInvoice, Product product,
-                              float quantity, float vatCoeff, float price, float total, float vat,
-                              float totalWhitVat) {
-        this.stokMovement = stokMovement;
+    public SupplierInvoiceRow(StockMoviment stockMoviment, SupplierInvoice supplierInvoice, Product product, String notes, float quantity, float vatCoeff, float price, float total, float vat, float totalWhitVat) {
+        this.stockMoviment = stockMoviment;
         this.supplierInvoice = supplierInvoice;
         this.product = product;
+        this.notes = notes;
         this.quantity = quantity;
         this.vatCoeff = vatCoeff;
         this.price = price;
@@ -88,6 +88,7 @@ public class SupplierInvoiceRow {
     public void setId(long id) {
         this.id = id;
     }
+
 
     public SupplierInvoice getSupplierInvoice() {
         return supplierInvoice;
@@ -153,13 +154,13 @@ public class SupplierInvoiceRow {
         this.totalWhitVat = totalWhitVat;
     }
 
-    public StokMovement getStokMovement() {
-        return stokMovement;
+    public StockMoviment getStockMoviment() {
+        return stockMoviment;
     }
 
-    public void setStokMovement(StokMovement stokMovement) {
-        stokMovement.setSupplierInvoiceRow(this);
-        this.stokMovement = stokMovement;
+    public void setStockMoviment(StockMoviment stockMoviment) {
+        stockMoviment.setSupplierInvoiceRow(this);
+        this.stockMoviment = stockMoviment;
     }
     // equals and hashcode
 
@@ -183,7 +184,7 @@ public class SupplierInvoiceRow {
     public String toString() {
         return "SupplierInvoiceRow{" +
                 "id=" + id +
-                ", stokMovement=" + stokMovement +
+                ", stockMoviment=" + stockMoviment +
                 ", supplierInvoice=" + supplierInvoice +
                 ", product=" + product +
                 ", quantity=" + quantity +

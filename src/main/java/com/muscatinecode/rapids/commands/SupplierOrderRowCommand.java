@@ -11,7 +11,7 @@ public class SupplierOrderRowCommand {
 
     private long id;
 
-    private String note;
+    private String notes;
     private float quantity;
 
     private SupplierOrderCommand supplierOrder;

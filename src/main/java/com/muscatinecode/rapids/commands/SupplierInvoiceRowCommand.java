@@ -12,9 +12,9 @@ public class SupplierInvoiceRowCommand {
 
     private long id;
 
-    private StokMovementCommand stokMovement;
+    private StockMovimentCommand stokMovement;
 
-
+private String notes;
     private SupplierInvoiceCommand supplierInvoice;
 
     private ProductCommand product;
