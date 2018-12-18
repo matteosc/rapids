@@ -8,6 +8,7 @@ import com.muscatinecode.rapids.repositories.AllergenRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -24,7 +25,12 @@ private final AllergenToAllergenCommand allergenToAllergenCommand;
         this.allergenCommandToAllergen = allergenCommandToAllergen;
     }
 
-
+    @Override
+    public Set<Allergen> listAllAllergen() {
+        Set<Allergen> allergenSet = new HashSet<>();
+        allergenRepository.findAll().iterator().forEachRemaining(allergenSet::add);
+        return allergenSet;
+    }
 
     @Override
     public Set<AllergenCommand> listAllAllergensCommands() {

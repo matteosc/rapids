@@ -12,7 +12,7 @@ import java.util.Set;
  * Created by jt on 6/27/17.
  */
 public interface AllergenService {
-
+    public Set<Allergen> listAllAllergen();
     Set<AllergenCommand> listAllAllergensCommands();
 
     Allergen findById(Long l);

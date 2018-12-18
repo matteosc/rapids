@@ -18,15 +18,21 @@
     width: 950px;
     float: left;
 
+
 }
 
 body {
-    font-family: Verdana, Verdana, Geneva, SansSerif;
+    font-family: Georgia, Verdana, Geneva, SansSerif;
     font-size: 14px;
     font-style: normal;
     font-weight: normal;
 
 
+}
+
+.myRow{
+    margin-top: -15px;
+    margin-bottom: -15px;
 }
 #logo{
 
@@ -62,6 +68,7 @@ body {
 }
 .sticky-offset {
  margin-bottom: 100px;
+
 }
 
 .navbar-my{

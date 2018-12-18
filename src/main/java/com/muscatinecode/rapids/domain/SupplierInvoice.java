@@ -1,5 +1,6 @@
 package com.muscatinecode.rapids.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class SupplierInvoice {
     private long id;
     @NotNull
 // think about create a contraint validator classs
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate purchaseDate;
 
 

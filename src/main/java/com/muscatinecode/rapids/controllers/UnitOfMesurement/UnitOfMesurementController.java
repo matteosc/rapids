@@ -5,12 +5,14 @@ import com.muscatinecode.rapids.commands.UnitOfMeasureCommand;
 import com.muscatinecode.rapids.domain.UnitOfMeasure;
 import com.muscatinecode.rapids.services.UnitOfMeasureService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collection;
 import java.util.List;
@@ -21,71 +23,73 @@ import java.util.List;
 @Slf4j
 @Controller
 public class UnitOfMesurementController {
+@Autowired
+    private  UnitOfMeasureService unitOfMeasureService;
 
-    private final UnitOfMeasureService unitOfMeasureService;
 
-    public UnitOfMesurementController(UnitOfMeasureService unitOfMeasureService) {
-        this.unitOfMeasureService = unitOfMeasureService;
-    }
-/*
-    @InitBinder
-    public void setAllowedFields(WebDataBinder dataBinder) {
-        dataBinder.setDisallowedFields("id");
 
-    }
-*/
-    @GetMapping
-    @RequestMapping("/uom/{id}/show")
-    public String showById(@PathVariable String id, Model model) {
 
-        model.addAttribute("uom", unitOfMeasureService.findById(new Long(id)));
+    @RequestMapping({"uom", "uom/", "uom/index"})
+    public ModelAndView getIndexPage() {
+       ModelAndView modelAndView=new ModelAndView("uom/index");
+        modelAndView.addObject("uoms", unitOfMeasureService.listAllUoms());
 
-        return "uom/show";
+        return modelAndView;
     }
 
-    @GetMapping
-    @RequestMapping("uom/new")
-    public String newUom(Model model) {
-        model.addAttribute("unitofmesure", new UnitOfMeasureCommand());
+    @RequestMapping("uom/list")
+    public ModelAndView getListPage() {
+        ModelAndView modelAndView=new ModelAndView("uom/list");
+        modelAndView.addObject("uoms", unitOfMeasureService.listAllUoms());
 
-        return "uom/uomform";
+        return modelAndView;
     }
 
     @GetMapping
-    @RequestMapping("uom/{id}/update")
-    public String updateUom(@PathVariable String id, Model model) {
-        UnitOfMeasureCommand uom=unitOfMeasureService.findCommandById(Long.valueOf(id));
-       System.out.println("id in comm"+ uom.getId());
-        model.addAttribute("unitofmesure", uom);
-        return "uom/uomform";
+    @RequestMapping("/uom/{id}/show.html")
+    public ModelAndView showById(@PathVariable String id) {
+       ModelAndView modelAndView=new ModelAndView("uom/show");
+modelAndView.addObject("uom",unitOfMeasureService.findCommandById(new Long(id)));
+
+        return modelAndView;
     }
 
-    @PostMapping("uom/")
-    public String saveOrUpdate(@ModelAttribute UnitOfMeasureCommand command) {
-        System.out.println("id in post "+command.getId());
-        UnitOfMeasureCommand savedCommand = unitOfMeasureService.saveUnitOfMeasureCommand(command);
 
-        return "redirect:/uom/" + savedCommand.getId() + "/show";
+
+    @RequestMapping(value = "uom/new.html", method = RequestMethod.GET)
+    public ModelAndView getUomFormNew() {
+        ModelAndView modelAndView=new ModelAndView("uom/uomform");
+modelAndView.addObject("unitofmesure", new UnitOfMeasureCommand());
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "uom/{id}/update.html", method = RequestMethod.GET)
+    public ModelAndView getUomFormUpdate(@PathVariable String id) {
+        ModelAndView modelAndView=new ModelAndView("uom/uomform");
+
+        modelAndView.addObject("unitofmesure", unitOfMeasureService.findCommandById(new Long(id)));
+        return modelAndView;
     }
 
     @GetMapping
-    @RequestMapping("uom/{id}/delete")
+    @RequestMapping("uom/{id}/delete.html")
     public String deleteById(@PathVariable String id) {
 
-        log.debug("Deleting id: " + id);
+
 
         unitOfMeasureService.deleteById(Long.valueOf(id));
         return "redirect:/uom/";
     }
 
-    @RequestMapping({"uom/find"})
-    public String getIndexPage(Model model) {
-        log.debug("Getting Index page");
 
-        model.addAttribute("uom", new UnitOfMeasure());
+    @RequestMapping(value = "/uom/", method = RequestMethod.POST)
+    public ModelAndView submitUomForm(@ModelAttribute("uom1") UnitOfMeasureCommand uom1) {
+       System.out.println("im in");
+        UnitOfMeasureCommand savedCommand = unitOfMeasureService.saveUnitOfMeasureCommand(uom1);
+        System.out.println("id "+savedCommand.getId());
+        ModelAndView modelAndView=new ModelAndView(  "redirect:/uom/"+savedCommand.getId() + "/show.html");
 
-        return "uom/find";
+        return modelAndView;
     }
-
-
 }

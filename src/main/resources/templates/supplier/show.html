@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cusine</title>
+
+    <link rel="stylesheet"
+          th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}"/>
+
+</head>
+<body>
+<!--/*@thymesVar id="recipe" type="com.muscatinecode.domain.Recipe"*/-->
+<div class="container-fluid">
+    <div class="fixed-top navbar">
+        <a href="#" th:href="@{/supplier/}">
+            <button class="btn   btn-outline-warning" type="button">Orders</button>
+        </a>
+
+        <a href="#" th:href="@{/supplier/}">
+            <button class="btn   btn-outline-info" type="button">Invoices</button>
+        </a>
+
+
+
+            <a href="#" th:href="@{/supplier/}">
+                <button class="btn   btn-outline-secondary" type="button">Back to supplier</button>
+            </a>
+
+    </div>
+    <div class="row" style="margin-top: 30px">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="pannel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h1 class="panel-title" th:text="${supplier.name}">supplier Description Here!</h1>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <label>SSN:</label> <span th:text="${supplier.socialSecurityNumber}">supplier Description Here!</span>
+    </br>
+    <label>VAT n:</label> <span th:text="${supplier.vatNumber}">supplier Description Here!</span>
+    </br>
+    <label>web:</label> <span th:text="${supplier.webSite}">supplier Description Here!</span>
+    </br>
+    <label>Tel:</label> <span th:text="${supplier.telephone}">supplier Description Here!</span>
+    </br>
+    <label>e-mail:</label> <span th:text="${supplier.address.email}">supplier Description Here!</span>
+    </br>   <label>Address</label>
+    <label>Street:</label> <span th:text="${supplier.address.street}">supplier Description Here!</span>
+    </br>
+    <label>City:</label> <span th:text="${supplier.address.city}">supplier Description Here!</span>
+    </br>
+    <label>Zip Code:</label> <span th:text="${supplier.address.zipCode}">supplier Description Here!</span>
+    </br>
+    <label>State/ Prov:</label> <span th:text="${supplier.address.state}">supplier Description Here!</span>
+    </br>
+    <label>Nation:</label> <span th:text="${supplier.address.nation}">supplier Description Here!</span>
+    </br>
+
+</div>
+</body>
+</html>

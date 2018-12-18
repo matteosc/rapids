@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cusine</title>
+
+    <link rel="stylesheet"
+          th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}"/>
+
+</head>
+<body>
+<!--/*@thymesVar id="supplier" type="com.muscatinecode.domain.supplier"*/-->
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-12  ">
+
+            <form class="needs-validation " th:object="${supplier}" th:action="@{/supplier/}" method="post">
+                <input type="hidden" th:field="*{id}"/>
+
+                <div class="form-row myRow">
+                    <div class="col-md-8 mb-3">
+                        <label>Supplier</label>
+                        <input type="text" class="form-control" th:field="*{name}" aria-invalid="true">
+
+                        <div class="valid-tooltip">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <label>VAT</label>
+
+                        <input type="text" class="form-control" th:field="*{vatNumber}" aria-invalid="true">
+                        <div class="valid-tooltip">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <label>S.S.N.</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+
+                            </div>
+                            <input type="text" class="form-control" th:field="*{socialSecurityNumber}" aria-invalid="true">
+                            <div class="invalid-tooltip">
+                                Please choose a unique and valid username.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-row myRow">
+                    <div class="col-md-4 mb-3">
+                        <label>Phone Number</label>
+                        <input type="text" class="form-control" th:field="*{telephone}" aria-invalid="true">
+                        <div class="valid-tooltip">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label>e-mail</label>
+                        <input type="text" class="form-control" th:field="*{address.email}" aria-invalid="true">
+                        <div class="valid-tooltip">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label>Web</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+
+                            </div>
+                            <input type="text" class="form-control" th:field="*{webSite}" aria-invalid="true">
+                            <div class="invalid-tooltip">
+                                Please choose a unique and valid username.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row myRow">
+                    <div class="col-md-8 mb-3">
+                        <label>Street</label>
+                        <input type="text" class="form-control" th:field="*{address.street}" aria-invalid="true">
+                        <div class="valid-tooltip">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label>City</label>
+                        <input type="text" class="form-control" th:field="*{address.city}" aria-invalid="true">
+                        <div class="valid-tooltip">
+                            Looks good!
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="form-row myRow">
+                    <div class="col-md-2 mb-3">
+                        <label>Zip Code</label>
+                        <input type="text" class="form-control" th:field="*{address.zipCode}" aria-invalid="true">
+                        <div class="valid-tooltip">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>State/ Prov.</label>
+                        <input type="text" class="form-control" th:field="*{address.state}" aria-invalid="true">
+                        <div class="valid-tooltip">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-7 mb-3">
+                        <label>Country</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+
+                            </div>
+                            <input type="text" class="form-control" th:field="*{address.nation}" aria-invalid="true">
+                            <div class="invalid-tooltip">
+                                Please choose a unique and valid username.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <a class="btn btn-secondary" th:href="@{/supplier/}" role="button">Cancel</a>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
